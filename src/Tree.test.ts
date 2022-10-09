@@ -192,4 +192,44 @@ describe("Tree", () => {
             });
         });
     });
+
+    describe("toString", () => {
+        describe("with single number expression", () => {
+            it("should return correct value when a positive integer is passed", () => {
+                expect(new Tree("3").toString()).to.equal("3");
+            });
+
+            it("should return correct value when a positive integer with plus sign is passed", () => {
+                expect(new Tree("+3").toString()).to.equal("+3");
+            });
+
+            it("should return correct value when a negative integer is passed", () => {
+                expect(new Tree("-3").toString()).to.equal("-3");
+            });
+
+            it("should return correct value when a positive float value is passed", () => {
+                expect(new Tree("3.5").toString()).to.equal("3.5");
+            });
+
+            it("should return correct value when a positive float value with plus sign is passed", () => {
+                expect(new Tree("+3.5").toString()).to.equal("+3.5");
+            });
+
+            it("should return correct value when a negative float value is passed", () => {
+                expect(new Tree("-3.5").toString()).to.equal("-3.5");
+            });
+
+            it("should return correct value when a float value without leading number is passed", () => {
+                expect(new Tree(".5").toString()).to.equal(".5");
+            });
+
+            it("should return correct value when a float value with plus sign without leading number is passed", () => {
+                expect(new Tree("+.5").toString()).to.equal("+.5");
+            });
+
+            it("should return correct value when a negative float value sign without leading number is passed", () => {
+                expect(new Tree("-.5").toString()).to.equal("-.5");
+            });
+        });
+    });
 });
