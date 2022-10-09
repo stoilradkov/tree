@@ -175,5 +175,21 @@ describe("Tree", () => {
                 expect(() => new Tree("6÷0").result()).to.throw("Illegal division");
             });
         });
+
+        describe("expression with multiple operators", () => {
+            it("should consider operator priority", () => {
+                expect(new Tree("2+3x4").result()).to.equal(14);
+                expect(new Tree("4-4÷2").result()).to.equal(2);
+            });
+
+            it("should consider brackets priority", () => {
+                expect(new Tree("(3-1)x4").result()).to.equal(8);
+                expect(new Tree("10÷(7-1x2)").result()).to.equal(2);
+            });
+
+            it("should return correct value for an arbitrary expression", () => {
+                expect(new Tree("((7 + ((3 - 2) x 5)) ÷ 6)").result()).to.equal(2);
+            });
+        });
     });
 });
