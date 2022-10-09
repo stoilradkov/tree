@@ -9,3 +9,8 @@ export interface Token {
 
     get symbol(): string;
 }
+
+export interface TokenType {
+    isOfType(symbol: string): boolean;
+    build(symbol: string): Token;
+}
