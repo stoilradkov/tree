@@ -1,0 +1,10 @@
+node_modules
+build
+.nyc_output
+.vscode
+.env
+.env.local
+.env.production
+.env.development.local
+.env.test.local
+.env.production.local

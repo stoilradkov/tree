@@ -1,0 +1,40 @@
+{
+  "name": "tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index",
+  "scripts": {
+    "build": "tsc",
+    "dev": "env-cmd -f .env ts-node-dev --poll src/index.ts",
+    "test": "ts-mocha -p tsconfig.json src/**/*.test.ts",
+    "test:cov": "nyc ts-mocha -p tsconfig.json src/**/*.test.ts",
+    "start": "tsc && node build/index.js"
+  },
+  "keywords": [
+    "typescript",
+    "ts",
+    "setup",
+    "init"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.3.3",
+    "@types/mocha": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0",
+    "ts-mocha": "^10.0.0"
+  }
+}
