@@ -187,6 +187,10 @@ describe("Tree", () => {
                 expect(new Tree("10÷(7-1x2)").result()).to.equal(2);
             });
 
+            it("should return correct value for a number wrapped in brackets", () => {
+                expect(new Tree("(5)+2x3").result()).to.equal(11);
+            });
+
             it("should return correct value for an arbitrary expression", () => {
                 expect(new Tree("((7 + ((3 - 2) x 5)) ÷ 6)").result()).to.equal(2);
             });

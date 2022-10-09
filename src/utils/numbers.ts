@@ -3,7 +3,7 @@ export const isNumber = (symbol: string) => !isNaN(+symbol) && !isNaN(parseFloat
 export const isStartOfNumber = (previousCharacter: string, character: string) =>
     isNumber(character) ||
     ((character === "+" || character === "-" || character === ".") &&
-        (previousCharacter === undefined || !/[0-9]/.test(previousCharacter)));
+        (previousCharacter === undefined || (!/[0-9]/.test(previousCharacter) && previousCharacter !== ")")));
 
 export const extractNumber = (expression: string, start: number) => {
     let end = start + 1;
