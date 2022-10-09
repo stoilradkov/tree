@@ -231,5 +231,27 @@ describe("Tree", () => {
                 expect(new Tree("-.5").toString()).to.equal("-.5");
             });
         });
+
+        describe("with complex expression", () => {
+            it("should return correct value when using two integers", () => {
+                expect(new Tree("1+2").toString()).to.equal("(1 + 2)");
+                expect(new Tree("1-2").toString()).to.equal("(1 - 2)");
+                expect(new Tree("1x2").toString()).to.equal("(1 x 2)");
+                expect(new Tree("1÷2").toString()).to.equal("(1 ÷ 2)");
+            });
+
+            it("should ignore whitespaces", () => {
+                expect(new Tree("  1.5+ 2  ++3  ").toString()).to.equal("((1.5 + 2) + +3)");
+            });
+
+            it("should consider operator priority", () => {
+                expect(new Tree("2+3x4").toString()).to.equal("(2 + (3 x 4))");
+                expect(new Tree("4-4÷2").toString()).to.equal("(4 - (4 ÷ 2))");
+            });
+
+            it("should consider brackets priority", () => {
+                expect(new Tree("(2+3)x4").toString()).to.equal("((2 + 3) x 4)");
+            });
+        });
     });
 });
