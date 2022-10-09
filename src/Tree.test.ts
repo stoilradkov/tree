@@ -26,7 +26,8 @@ describe("Tree", () => {
 
             it("should throw an error when an invalid expression is passed", () => {
                 expect(() => new Tree("2+++3").result()).to.throw("Invalid expression");
-                expect(() => new Tree("2xx3").result()).to.throw("Invalid expression");
+                expect(() => new Tree("(2+3)10").result()).to.throw("Invalid expression");
+                expect(() => new Tree("1(2").result()).to.throw("Invalid expression");
             });
         });
 

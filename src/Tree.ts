@@ -55,6 +55,10 @@ export class Tree {
             }
         }
 
+        if (stack.length === 0) {
+            throw new Error("Invalid expression");
+        }
+
         while (stack.length > 1) {
             stack.push(this.combine(operators, stack));
         }
@@ -63,13 +67,13 @@ export class Tree {
     }
 
     private combine(operators: (Operator | Bracket)[], stack: Node[]) {
-        const rootToken = operators.pop() as Operator;
+        const rootToken = operators.pop();
         const rightNode = stack.pop();
         const leftNode = stack.pop();
-        if (rightNode === undefined || leftNode === undefined) {
+        if (rootToken === undefined || !rootToken.isOperator() || rightNode === undefined || leftNode === undefined) {
             throw new Error("Invalid expression");
         }
 
-        return new OperatorNode(rootToken, leftNode, rightNode);
+        return new OperatorNode(rootToken as Operator, leftNode, rightNode);
     }
 }
